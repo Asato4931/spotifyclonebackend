@@ -1,0 +1,17 @@
+{% if all_playlists%}
+<h3>Here are all my playlists.</h3>
+
+<ul>
+  {% for playlist in all_playlists%}
+  <li>
+    <a href="{%url 'music:detail' playlist.id %}">
+      {{playlist.playlist_title}}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+
+{%else %}
+<h3>You don't have any playlists</h3>
+
+{% endif %}

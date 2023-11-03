@@ -1,0 +1,15 @@
+{% load static%}
+
+<img src="{% static playlist.playlist_logo %}" />
+
+<h1>{{playlist.playlist_title}}</h1>
+
+{% for song in playlist.song_set.all %}
+<li>{{song.song_title}}</li>
+<img src="{% static song.song_logo %}" />
+<audio controls>
+  <source src="{{ song.song_mp3.url }}" type="audio/mpeg" />
+  Your browser does not support the audio tag.
+</audio>
+
+{% endfor %}
