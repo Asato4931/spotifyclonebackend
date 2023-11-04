@@ -10,6 +10,7 @@ app_name = "music"
 urlpatterns = [
     path("", views.index, name="index"),
     path("<int:playlist_id>/", views.detail, name="detail"),
+    path("playlists/", views.get_playlists, name="get_playlists"),
 ]
 
 if settings.DEBUG:
