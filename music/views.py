@@ -5,6 +5,7 @@ from .models import Playlist
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Playlist
+from .serializers import PlaylistSerializer
 
 
 def index(request):
@@ -21,7 +22,6 @@ def detail(request, playlist_id):
 
 @api_view(["GET"])
 def get_playlists(request):
-    playlists = Playlist.objects.all().values(
-        "playlist_title", "playlist_logo", "playlist_subtitle"
-    )
-    return Response(list(playlists))
+    playlists = Playlist.objects.all()
+    serializer = PlaylistSerializer(playlists, many=True)
+    return Response(serializer.data)
