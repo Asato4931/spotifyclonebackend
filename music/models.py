@@ -24,3 +24,30 @@ class Song(models.Model):
 
     def __str__(self):
         return self.song_title
+
+
+class WelcomePlaylist(models.Model):
+    playlist_title = models.CharField(max_length=250, default="")
+    playlist_logo = models.CharField(max_length=250, default="")
+    playlist_subtitle = models.CharField(max_length=250, default="")
+
+    def __str__(self):
+        return self.playlist_title
+
+
+class MadeforyouPlaylist(models.Model):
+    playlist_title = models.CharField(max_length=250, default="")
+    playlist_logo = models.CharField(max_length=250, default="")
+    playlist_subtitle = models.CharField(max_length=250, default="")
+
+    def __str__(self):
+        return self.playlist_title
+
+
+class RecentPlaylist(models.Model):
+    playlist_title = models.CharField(max_length=250, default="")
+    playlist_logo = models.CharField(max_length=250, default="")
+    playlist_subtitle = models.CharField(max_length=250, default="")
+
+    def __str__(self):
+        return self.playlist_title
