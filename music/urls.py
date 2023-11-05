@@ -11,6 +11,21 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("<int:playlist_id>/", views.detail, name="detail"),
     path("playlists/", views.get_playlists, name="get_playlists"),
+    path(
+        "madeforyouplaylists/",
+        views.get_madeforyouplaylists,
+        name="get_madeforyouplaylists",
+    ),
+    path(
+        "welcomeplaylists/",
+        views.get_welcomeplaylists,
+        name="get_welcomeplaylists",
+    ),
+    path(
+        "recentplaylists/",
+        views.get_recentplaylists,
+        name="get_recentplaylists",
+    ),
 ]
 
 if settings.DEBUG:
