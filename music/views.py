@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Playlist, MadeforyouPlaylist, WelcomePlaylist, RecentPlaylist
+from .models import Playlist, MadeforyouPlaylist, WelcomePlaylist, RecentPlaylist, Song
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,6 +10,7 @@ from .serializers import (
     MadeforyouPlaylistSerializer,
     WelcomePlaylistSerializer,
     RecentPlaylistSerializer,
+    SongSerializer,
 )
 
 
@@ -50,4 +51,11 @@ def get_welcomeplaylists(request):
 def get_recentplaylists(request):
     recentplaylists = RecentPlaylist.objects.all()
     serializer = RecentPlaylistSerializer(recentplaylists, many=True)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def get_songs(request):
+    songs = Song.objects.all()
+    serializer = SongSerializer(songs, many=True, context={"request": request})
     return Response(serializer.data)

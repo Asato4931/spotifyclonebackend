@@ -43,6 +43,8 @@ class WelcomePlaylistSerializer(serializers.ModelSerializer):
 
 
 class SongSerializer(serializers.ModelSerializer):
+    song_logo = serializers.SerializerMethodField()
+
     class Meta:
         model = Song
         fields = [
@@ -54,6 +56,17 @@ class SongSerializer(serializers.ModelSerializer):
             "song_logo",
             "song_mp3",
         ]
+
+    def get_song_logo(self, song):
+        if song.song_logo:
+            return f"{settings.STATIC_URL}{song.song_logo}"
+        return None
+
+    def get_song_mp3(self, song):
+        if song.song_mp3:
+            request = self.context.get("request")
+            return request.build_absolute_uri(song.song_mp3.url)
+        return None
 
 
 class RecentPlaylistSerializer(serializers.ModelSerializer):

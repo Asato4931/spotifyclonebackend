@@ -26,6 +26,11 @@ urlpatterns = [
         views.get_recentplaylists,
         name="get_recentplaylists",
     ),
+    path(
+        "お気に入りの曲/songs/",
+        views.get_songs,
+        name="get_songs",
+    ),
 ]
 
 if settings.DEBUG:
